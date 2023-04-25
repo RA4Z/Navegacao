@@ -8,7 +8,7 @@ import useTextos from '../../hooks/useTextos';
 import Detalhes from './componentes/Detalhes';
 import Item from './componentes/Item';
 
-export default function Cesta({ detalhes, itens, produtor }) {
+export default function Cesta({ detalhes, itens, produtor, nome }) {
   const { topoCesta, tituloItens } = useTextos();
 
   return <>
