@@ -1,6 +1,7 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { StyleSheet } from 'react-native'
 
 import ProdutorRotas from "./ProdutorRotas";
 import MelhoresProdutoresRotas from "./MelhoresProdutoresRotas";
@@ -23,10 +24,13 @@ export default function AppRotas() {
                         if (route.name === 'Home') {
                             Icon = Home;
                         }
-                        return <Icon color={color} />
+                        return <Icon color={color} width={20} height={20} />
                     },
                     tabBarActiveTintColor: '#2A9F85',
                     tabBarInactiveTintColor: '#C7C7C7',
+                    tabBarLabelStyle: {
+                        fontSize: 15,
+                    },
                 })}>
                 <Tab.Screen name='Home' component={ProdutorRotas}/>
                 <Tab.Screen name='Melhores Produtores' component={MelhoresProdutoresRotas}/>
