@@ -20,7 +20,7 @@ export default function Produtores({ melhoresProdutores }) {
   const mensagemCompleta = mensagemCompra?.replace('$NOME', nomeCompra);
 
   const [ exibeMensagem, setExibeMensagem ] = useState(false);
-  
+
   useEffect(() => {
     setExibeMensagem(!!nomeCompra);
     let timeout;
@@ -31,6 +31,7 @@ export default function Produtores({ melhoresProdutores }) {
       }, 3000);
     }
 
+    return () => clearTimeout(timeout);
   }, [timestampCompra]);
 
   const TopoLista = () => {
