@@ -19,11 +19,6 @@ export default function Resumo() {
         botaoProdutorCompra
       } = useTextos();
 
-      function voltarDuasTelas() {
-        navigation.goBack();
-        navigation.goBack();
-      }
-
     const nomeCompra = route.params?.compra.nome;
     const mensagemCompleta = mensagemCompra?.replace('$NOME', nomeCompra);
 
@@ -55,7 +50,7 @@ export default function Resumo() {
         
                 <TouchableOpacity
                 style={[estilos.botao, estilos.botaoProdutor]}
-                onPress={() => {voltarDuasTelas()}}>
+                onPress={() => {navigation.pop(2)}}>
                 <Text style={[estilos.textoBotao, estilos.textoBotaoProdutor ]}>{botaoProdutorCompra}</Text>
                 </TouchableOpacity>
             </View>
