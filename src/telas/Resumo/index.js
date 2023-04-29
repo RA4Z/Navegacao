@@ -1,5 +1,6 @@
 import React from "react";
 import { Text, View, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 import useTextos from '../../hooks/useTextos';
 
@@ -7,6 +8,9 @@ import VoltarSVG from '../../assets/voltar.svg';
 import sucesso from '../../assets/sucesso.png';
 
 export default function Resumo() {
+    const navigation = useNavigation();
+    const route = useRoute();
+
     const {
         mensagemCompra,
         topoCompra,
@@ -14,13 +18,21 @@ export default function Resumo() {
         botaoHomeCompra,
         botaoProdutorCompra
       } = useTextos();
-    
+
+      function voltarDuasTelas() {
+        navigation.goBack();
+        navigation.goBack();
+      }
+
+    const nomeCompra = route.params?.compra.nome;
+    const mensagemCompleta = mensagemCompra?.replace('$NOME', nomeCompra);
+
       return (
         <View style={estilos.tela}>
             <View style={estilos.topo}>
             <TouchableOpacity
                 style={estilos.topoVoltar}
-                onPress={() => { }}
+                onPress={() => { navigation.goBack()}}
             >
                 <VoltarSVG />
             </TouchableOpacity>
@@ -33,17 +45,17 @@ export default function Resumo() {
         
             <View style={estilos.textos}>
                 <Text style={estilos.titulo}>{tituloCompra}</Text>
-                <Text style={estilos.mensagem}>{mensagemCompra}</Text>
+                <Text style={estilos.mensagem}>{mensagemCompleta}</Text>
         
                 <TouchableOpacity
                 style={estilos.botao}
-                onPress={() => {}}>
+                onPress={() => {navigation.navigate('HomeScreen')}}>
                 <Text style={estilos.textoBotao}>{botaoHomeCompra}</Text>
                 </TouchableOpacity>
         
                 <TouchableOpacity
                 style={[estilos.botao, estilos.botaoProdutor]}
-                onPress={() => {}}>
+                onPress={() => {voltarDuasTelas()}}>
                 <Text style={[estilos.textoBotao, estilos.textoBotaoProdutor ]}>{botaoProdutorCompra}</Text>
                 </TouchableOpacity>
             </View>
